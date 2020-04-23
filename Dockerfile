@@ -14,7 +14,7 @@ RUN apk add --no-cache \
     mkdir -p /root/.ssh/ && \
     echo "$SSH_KEY" > /root/.ssh/id_rsa && \
     chmod -R 600 /root/.ssh/ && \
-    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && \
 
 # Install build packages
     apk add --no-cache --virtual=build-dependencies \
