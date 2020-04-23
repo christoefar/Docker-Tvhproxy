@@ -26,13 +26,16 @@ RUN apk add --no-cache \
     mkdir -p /opt/tvhproxy && \
     wget -qO /opt/tvhproxy/tvhProxy.py "https://raw.githubusercontent.com/chkuendig/tvhProxy/master/tvhProxy.py" && \
     wget -qO /opt/tvhproxy/ssdp.py "https://raw.githubusercontent.com/chkuendig/tvhProxy/master/ssdp.py" && \
-
+    wget -qO /opt/tvhproxy/requirements.txt "https://raw.githubusercontent.com/chkuendig/tvhProxy/master/requirements.txt" && \
+    
 # Cleanup
     apk del --purge build-dependencies && \
     rm -rf /var/cache/apk/* /tmp/* && \
 
 # Set file permissions
     chmod +x /docker-entrypoint.sh /opt/tvhproxy/tvhProxy.py
+
+RUN pip install -r  /opt/tvhProxy/requirements.txt
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
