@@ -18,7 +18,7 @@ RUN apk add --no-cache \
 # Install runtime packages
     apk add --no-cache \
         python \
-        pip \
+        python-pip \
         py-flask \
         py-requests \
         py-gevent && \
