@@ -9,12 +9,6 @@ RUN apk add --no-cache \
         tzdata \
         git \
         openssh && \
-      
-# SSH files
-    mkdir -p /root/.ssh/ && \
-    echo "$SSH_KEY" > /root/.ssh/id_rsa && \
-    chmod -R 600 /root/.ssh/ && \
-    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && \
 
 # Install build packages
     apk add --no-cache --virtual=build-dependencies \
@@ -33,7 +27,7 @@ RUN apk add --no-cache \
 
 # Install tvhproxy
     mkdir -p /opt/tvhproxy && \
-    git clone git@github.com:christoefar/tvhProxy.git /opt/tvhproxy && \
+    git clone git://github.com/christoefar/tvhProxy.git /opt/tvhproxy && \
     
 # Cleanup
     apk del --purge build-dependencies && \
