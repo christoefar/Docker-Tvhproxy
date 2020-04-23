@@ -25,6 +25,7 @@ RUN apk add --no-cache \
 # Install tvhproxy
     mkdir -p /opt/tvhproxy && \
     wget -qO /opt/tvhproxy/tvhProxy.py "https://raw.githubusercontent.com/chkuendig/tvhProxy/master/tvhProxy.py" && \
+    wget -qO /opt/tvhproxy/ssdp.py "https://raw.githubusercontent.com/chkuendig/tvhProxy/master/ssdp.py" && \
 
 # Cleanup
     apk del --purge build-dependencies && \
