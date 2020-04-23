@@ -6,7 +6,15 @@ COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN apk add --no-cache \
         ca-certificates \
         coreutils \
-        tzdata && \
+        tzdata \
+        git \
+        openssh && \
+      
+# SSH files
+    mkdir -p /root/.ssh/ && \
+    echo "$SSH_KEY" > /root/.ssh/id_rsa && \
+    chmod -R 600 /root/.ssh/ && \
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 # Install build packages
     apk add --no-cache --virtual=build-dependencies \
@@ -25,9 +33,7 @@ RUN apk add --no-cache \
 
 # Install tvhproxy
     mkdir -p /opt/tvhproxy && \
-    wget -qO /opt/tvhproxy/tvhProxy.py "https://raw.githubusercontent.com/christoefar/tvhProxy/master/tvhProxy.py" && \
-    wget -qO /opt/tvhproxy/ssdp.py "https://raw.githubusercontent.com/christoefar/tvhProxy/master/ssdp.py" && \
-    wget -qO /opt/tvhproxy/requirements.txt "https://raw.githubusercontent.com/christoefar/tvhProxy/master/requirements.txt" && \
+    git clone git@github.com:christoefar/tvhProxy.git /opt/tvhproxy
     
 # Cleanup
     apk del --purge build-dependencies && \
