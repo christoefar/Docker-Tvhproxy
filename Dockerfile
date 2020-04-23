@@ -34,3 +34,5 @@ RUN apk add --no-cache \
     chmod +x /docker-entrypoint.sh /opt/tvhproxy/tvhProxy.py
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+EXPOSE 5004/tcp
