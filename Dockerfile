@@ -36,7 +36,7 @@ RUN apk add --no-cache \
 # Set file permissions
     chmod +x /docker-entrypoint.sh /opt/tvhproxy/tvhProxy.py
 
-RUN pip install -r  /opt/tvhProxy/requirements.txt
+RUN pip install -r  /opt/tvhproxy/requirements.txt
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
