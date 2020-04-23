@@ -33,7 +33,7 @@ RUN apk add --no-cache \
 
 # Install tvhproxy
     mkdir -p /opt/tvhproxy && \
-    git clone git@github.com:christoefar/tvhProxy.git /opt/tvhproxy
+    git clone git@github.com:christoefar/tvhProxy.git /opt/tvhproxy && \
     
 # Cleanup
     apk del --purge build-dependencies && \
